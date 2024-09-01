@@ -1,3 +1,6 @@
+// Copyright 2024 Yao Xiao
+// SPDX-License-Identifier: MIT
+
 use anyhow::Result;
 use tauri::{Runtime, Window};
 

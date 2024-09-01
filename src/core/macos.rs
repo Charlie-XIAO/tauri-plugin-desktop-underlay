@@ -1,3 +1,6 @@
+// Copyright 2024 Yao Xiao
+// SPDX-License-Identifier: MIT
+
 use std::os::raw::c_ulong;
 
 use objc::{msg_send, runtime::Object, sel, sel_impl};

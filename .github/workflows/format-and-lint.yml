@@ -55,6 +55,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Check code formatting
+        if: matrix.platform == 'ubuntu-latest'
         run: pnpm format:check
 
       - name: Check code linting
