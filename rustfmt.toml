@@ -1,0 +1,20 @@
+edition = "2021"
+
+match_block_trailing_comma = true
+newline_style = "Unix"
+use_field_init_shorthand = true
+use_small_heuristics = "Off"
+use_try_shorthand = true
+
+max_width = 88
+array_width = 88
+attr_fn_like_width = 88
+chain_width = 88
+fn_call_width = 88
+single_line_if_else_max_width = 88
+single_line_let_else_max_width = 88
+struct_lit_width = 88
+struct_variant_width = 88
+
+tab_spaces = 4
+short_array_element_width_threshold = 20

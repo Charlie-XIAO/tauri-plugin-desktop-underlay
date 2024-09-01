@@ -1,0 +1,28 @@
+[package]
+name = "tauri-plugin-desktop-underlay"
+version = "0.0.1"
+authors = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
+description = "Tauri plugin for making a window a desktop underlay, as if it were a wallpaper."
+edition = "2021"
+exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+links = "tauri-plugin-desktop-underlay"
+
+[build-dependencies]
+tauri-plugin = { version = "2.0.0-rc.7", features = ["build"] }
+
+[dependencies]
+anyhow = "1.0.86"
+tauri = { version = "2.0.0-rc.8" }
+
+[target."cfg(target_os = \"linux\")".dependencies]
+gtk = "0.18.1"
+gdk = "0.18.0"
+
+[target."cfg(target_os = \"macos\")".dependencies]
+objc = "0.2.7"
+
+[target."cfg(target_os = \"windows\")".dependencies]
+windows = { version = "0.58.0", features = [
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_Foundation"
+] }
