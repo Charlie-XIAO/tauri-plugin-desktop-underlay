@@ -1,5 +1,5 @@
 use gdk::WindowTypeHint;
-use gtk::ApplicationWindow;
+use gtk::{prelude::GtkWindowExt, ApplicationWindow};
 
 /// Set the window as a desktop underlay.
 pub(super) unsafe fn set_underlay(gtk_window: ApplicationWindow) {

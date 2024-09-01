@@ -8,6 +8,7 @@ mod macos;
 #[cfg(target_os = "windows")]
 mod windows;
 
+/// Determines if the window should be a desktop underlay.
 pub(crate) fn set_desktop_underlay<R: Runtime>(
     window: &Window<R>,
     desktop_underlay: bool,
@@ -22,6 +23,7 @@ pub(crate) fn set_desktop_underlay<R: Runtime>(
                 linux::unset_underlay(gtk_window);
             }
         }
+        Ok(())
     }
 
     #[cfg(target_os = "macos")]
