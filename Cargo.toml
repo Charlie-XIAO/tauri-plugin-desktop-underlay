@@ -6,7 +6,7 @@ edition = "2021"
 exclude = ["/examples", "/node_modules"]
 links = "tauri-plugin-desktop-underlay"
 
-description = "Tauri plugin for making a window a desktop underlay, as if it were a wallpaper."
+description = "Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons."
 keywords = ["tauri", "plugin", "desktop", "underlay", "wallpaper"]
 homepage = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
 repository = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"

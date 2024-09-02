@@ -2,7 +2,7 @@
   "name": "tauri-plugin-desktop-underlay-api",
   "version": "0.0.1",
   "author": "Yao Xiao <yx2436@nyu.edu>",
-  "description": "Tauri plugin for making a window a desktop underlay, as if it were a wallpaper.",
+  "description": "Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.",
   "type": "module",
   "types": "./dist-js/index.d.ts",
   "main": "./dist-js/index.cjs",
@@ -13,8 +13,7 @@
     "require": "./dist-js/index.cjs"
   },
   "files": [
-    "dist-js",
-    "README.md"
+    "dist-js"
   ],
   "scripts": {
     "prepublishOnly": "pnpm build",

@@ -1,6 +1,6 @@
 # PLUGIN-DESKTOP-UNDERLAY
 
-Tauri plugin to set a window as a desktop underlay. It is attached to the desktop, staying above the wallpaper but below desktop icons.
+Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.
 
 - **Linux:** ✅ (Untested)
 - **MacOS:** ✅ (Untested)
@@ -94,6 +94,10 @@ let main_window = app.get_webview_window("main").unwrap();
 let _ = main_window.set_desktop_underlay(true);
 let _ = main_window.set_desktop_underlay(false);
 ```
+
+## FAQ
+
+See [FAQ](./FAQ.md).
 
 ## Contributing
 
