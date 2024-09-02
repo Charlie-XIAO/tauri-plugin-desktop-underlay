@@ -9,8 +9,9 @@ use windows::{
     Win32::{
         Foundation::{BOOL, HWND, LPARAM, WPARAM},
         UI::WindowsAndMessaging::{
-            EnumWindows, FindWindowA, FindWindowExA, SendMessageA, SetParent,
-            SystemParametersInfoA, SPIF_UPDATEINIFILE, SPI_SETDESKWALLPAPER,
+            EnumWindows, FindWindowA, FindWindowExA, GetWindowLongA, SendMessageA,
+            SetParent, SetWindowLongA, SystemParametersInfoA, GWL_EXSTYLE,
+            SPIF_UPDATEINIFILE, SPI_SETDESKWALLPAPER, WS_EX_LAYERED,
         },
     },
 };
@@ -32,15 +33,24 @@ unsafe extern "system" fn enum_window(window: HWND, ref_worker_w: LPARAM) -> BOO
 
 /// Set the window as a desktop underlay.
 pub(super) unsafe fn set_underlay(hwnd: HWND) -> Result<()> {
-    let progman = FindWindowA(s!("Progman"), None).unwrap();
+    let progman = FindWindowA(s!("Progman"), None)?;
     SendMessageA(progman, 0x052C, WPARAM(0x0000000D), LPARAM(0));
     SendMessageA(progman, 0x052C, WPARAM(0x0000000D), LPARAM(1));
 
+    // `EnumWindows` always returns the `Err` invariant even though it succeeds;
+    // regardless it suffices to check if `worker_w` is updated to non-null
     let mut worker_w = HWND(null_mut());
-    EnumWindows(Some(enum_window), LPARAM(&mut worker_w as *mut HWND as _))?;
+    let _ = EnumWindows(Some(enum_window), LPARAM(&mut worker_w as *mut HWND as _));
     if worker_w == HWND(null_mut()) {
         bail!("Failed to find WorkerW");
     }
+
+    // Set as a layered window; this will always hide the borders and title bar
+    SetWindowLongA(
+        hwnd,
+        GWL_EXSTYLE,
+        GetWindowLongA(hwnd, GWL_EXSTYLE) | (WS_EX_LAYERED.0 as i32),
+    );
 
     SetParent(hwnd, worker_w)?;
     Ok(())
@@ -49,6 +59,13 @@ pub(super) unsafe fn set_underlay(hwnd: HWND) -> Result<()> {
 /// Unset the window from being a desktop underlay.
 pub(super) unsafe fn unset_underlay(hwnd: HWND) -> Result<()> {
     SetParent(hwnd, HWND(null_mut()))?;
+
+    // Reset from being a layered window
+    SetWindowLongA(
+        hwnd,
+        GWL_EXSTYLE,
+        GetWindowLongA(hwnd, GWL_EXSTYLE) & !(WS_EX_LAYERED.0 as i32),
+    );
 
     // Refresh the desktop
     SystemParametersInfoA(

@@ -1,0 +1,20 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  color: #EEEEEE;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}

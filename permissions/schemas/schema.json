@@ -295,6 +295,20 @@
       "type": "string",
       "oneOf": [
         {
+          "description": "allow-is-desktop-underlay -> Enables the is_desktop_underlay command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-is-desktop-underlay"
+          ]
+        },
+        {
+          "description": "deny-is-desktop-underlay -> Denies the is_desktop_underlay command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-is-desktop-underlay"
+          ]
+        },
+        {
           "description": "allow-set-desktop-underlay -> Enables the set_desktop_underlay command without any pre-configured scope.",
           "type": "string",
           "enum": [
@@ -309,7 +323,7 @@
           ]
         },
         {
-          "description": "default -> Default permissions for the plugin.",
+          "description": "default -> Allow all permissions for the plugin.",
           "type": "string",
           "enum": [
             "default"

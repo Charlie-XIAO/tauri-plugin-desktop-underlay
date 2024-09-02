@@ -1,0 +1,53 @@
+{
+  "productName": "desktop-clock",
+  "version": "0.1.0",
+  "identifier": "com.desktop-clock.app",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "url": "index.html",
+        "label": "main",
+        "width": 320,
+        "height": 160,
+        "resizable": false,
+        "decorations": false,
+        "transparent": true
+      },
+      {
+        "url": "manager.html",
+        "label": "manager",
+        "width": 400,
+        "height": 200,
+        "resizable": false
+      }
+    ],
+    "trayIcon": {
+      "id": "tray",
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false,
+      "tooltip": "Desktop Clock"
+    },
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

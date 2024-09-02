@@ -1,0 +1,26 @@
+{
+  "name": "desktop-clock",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0-rc.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tauri-plugin-desktop-underlay-api": "link:../.."
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0-rc.8",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}

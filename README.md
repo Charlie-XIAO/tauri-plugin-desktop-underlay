@@ -1,11 +1,14 @@
 # PLUGIN-DESKTOP-UNDERLAY
 
-Tauri plugin to set a window as a desktop underlay. It is attached to the desktop,
-staying above the wallpaper but below desktop icons.
+Tauri plugin to set a window as a desktop underlay. It is attached to the desktop, staying above the wallpaper but below desktop icons.
 
 - **Linux:** ✅ (Untested)
 - **MacOS:** ✅ (Untested)
 - **Windows:** ✅
+
+## Examples
+
+- [Desktop Clock](./examples/desktop-clock/)
 
 ## Install
 
@@ -20,6 +23,17 @@ You can install the JavaScript guest bindings using your preferred JavaScript pa
 
 ```bash
 npm|yarn|pnpm add tauri-plugin-desktop-underlay-api
+```
+
+## Build from Source
+
+If you want to try a local build, or you want to try the [examples](#examples) before determining whether to use this plugin, you may need to build the source code:
+
+```bash
+git clone https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay.git
+pnpm install
+pnpm build
+cargo check
 ```
 
 ## Usage
@@ -41,20 +55,44 @@ fn main() {
 Afterwards all the plugin's APIs are available through the JavaScript guest bindings:
 
 ```typescript
-import { setDesktopUnderlay } from "tauri-plugin-desktop-underlay-api";
+import {
+  setDesktopUnderlay,
+  isDesktopUnderlay,
+} from "tauri-plugin-desktop-underlay-api";
 
-setDesktopUnderlay(true);  // Set the current window as a desktop underlay
-setDesktopUnderlay(false); // Reset the current window as a normal window
+// --- Operate on the current window ---
+
+// Determine if it is desktop underlay
+const isUnderlay = await isDesktopUnderlay();
+
+// Set as desktop underlay or reset to normal
+await setDesktopUnderlay(true);
+await setDesktopUnderlay(false);
+
+// Application: Toggle between two modes
+await setDesktopUnderlay(!(await isDesktopUnderlay()));
+
+// --- Operate on another window with label "wallpaper" ---
+
+// Determine if it is desktop underlay
+const isUnderlay = await isDesktopUnderlay("wallpaper");
+
+// Set as desktop underlay or reset to normal
+await setDesktopUnderlay(true, "wallpaper");
+await setDesktopUnderlay(false, "wallpaper");
+
+// Application: Toggle between two modes
+await setDesktopUnderlay(!(await isDesktopUnderlay("wallpaper")), "wallpaper");
 ```
 
-If you only intend on using the APIs from Rust code, you can import the `DesktopUnderlayExt` trait extension on windows and webview windows:
+If you only intend on using the APIs from Rust code, you can import the `DesktopUnderlayExt` extension on windows and webview windows:
 
 ```rust
 use tauri_plugin_desktop_underlay::DesktopUnderlayExt;
 
-let main_window = app.get_window("main").unwrap();
-let _ = main_window.set_desktop_underlay(true);  // Set the main window as a desktop underlay
-let _ = main_window.set_desktop_underlay(false); // Reset the main window as a normal window
+let main_window = app.get_webview_window("main").unwrap();
+let _ = main_window.set_desktop_underlay(true);
+let _ = main_window.set_desktop_underlay(false);
 ```
 
 ## Contributing
@@ -63,4 +101,4 @@ Issues and PRs are welcome. Since I am only using Windows for desktop developmen
 
 ## License
 
-Copyright (c) 2024 Yao Xiao (@Charlie-XIAO); this project is released under the [MIT License](./LICENSE).
+Copyright (c) 2024 Yao Xiao [@Charlie-XIAO](https://github.com/Charlie-XIAO); this project is released under the [MIT License](./LICENSE).

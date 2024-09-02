@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-is-desktop-underlay"
+description = "Enables the is_desktop_underlay command without any pre-configured scope."
+commands.allow = ["is_desktop_underlay"]
+
+[[permission]]
+identifier = "deny-is-desktop-underlay"
+description = "Denies the is_desktop_underlay command without any pre-configured scope."
+commands.deny = ["is_desktop_underlay"]

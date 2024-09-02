@@ -1,0 +1,22 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.action {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.caption {
+  font-size: smaller;
+  font-style: italic;
+}
