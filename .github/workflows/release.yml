@@ -41,22 +41,24 @@ jobs:
       - name: Install frontend dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Publish to npm
+      - name: Publish to npm (dry-run)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            pnpm publish --dry-run
-          else
-            pnpm publish
-          fi
+        run: pnpm publish --dry-run
 
-      - name: Publish to crates.io
+      - name: Publish to crates.io (dry-run)
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            cargo publish --dry-run
-          else
-            cargo publish
-          fi
+        run: cargo publish --dry-run
+
+      - name: Publish to npm
+        if: github.event_name == 'push'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: pnpm publish
+
+      - name: Publish to crates.io
+        if: github.event_name == 'push'
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish
