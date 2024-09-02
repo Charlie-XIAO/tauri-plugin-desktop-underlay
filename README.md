@@ -8,7 +8,7 @@ Tauri plugin for making a window a desktop underlay, attached to the desktop, ab
 
 ## Examples
 
-- [Desktop Clock](./examples/desktop-clock/)
+- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock)
 
 ## Install
 
@@ -97,7 +97,7 @@ let _ = main_window.set_desktop_underlay(false);
 
 ## FAQ
 
-See [FAQ](./FAQ.md).
+See [FAQ](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/FAQ.md).
 
 ## Contributing
 
@@ -105,4 +105,4 @@ Issues and PRs are welcome. Since I am only using Windows for desktop developmen
 
 ## License
 
-Copyright (c) 2024 Yao Xiao [@Charlie-XIAO](https://github.com/Charlie-XIAO); this project is released under the [MIT License](./LICENSE).
+Copyright (c) 2024 Yao Xiao [@Charlie-XIAO](https://github.com/Charlie-XIAO); this project is released under the [MIT License](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/LICENSE).
