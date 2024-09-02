@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
-    "@tauri-apps/cli": "^2.0.0-rc.8",
+    "@tauri-apps/cli": "^2.0.0-rc.10",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
