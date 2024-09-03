@@ -44,7 +44,7 @@ jobs:
       - name: Publish to npm (dry-run)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-        run: pnpm publish --dry-run
+        run: pnpm publish --dry-run --no-git-checks
 
       - name: Publish to crates.io (dry-run)
         env:
@@ -55,7 +55,7 @@ jobs:
         if: github.event_name == 'push'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-        run: pnpm publish
+        run: pnpm publish --no-git-checks
 
       - name: Publish to crates.io
         if: github.event_name == 'push'
