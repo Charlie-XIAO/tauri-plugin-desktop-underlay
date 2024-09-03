@@ -1,5 +1,7 @@
 # PLUGIN-DESKTOP-UNDERLAY
 
+[![npm](https://img.shields.io/npm/v/tauri-plugin-desktop-underlay-api)](https://www.npmjs.com/package/tauri-plugin-desktop-underlay-api) [![crates.io](https://img.shields.io/crates/v/tauri-plugin-desktop-underlay.svg)](https://crates.io/crates/tauri-plugin-desktop-underlay) [![docs.rs](https://img.shields.io/docsrs/tauri-plugin-desktop-underlay)](https://docs.rs/tauri-plugin-desktop-underlay)
+
 Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.
 
 - **Linux:** ❌ (Under development)
