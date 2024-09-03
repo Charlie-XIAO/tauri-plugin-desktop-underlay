@@ -1,12 +1,13 @@
 // Copyright 2024 Yao Xiao
 // SPDX-License-Identifier: MIT
 
+//! Tauri plugin for making a window a desktop underlay, attached to the desktop, above
+//! the wallpaper, and below desktop icons.
+
 use anyhow::Result;
 use tauri::{Runtime, WebviewWindow, Window};
 
 /// A window extension that provides desktop underlay functionalities.
-///
-/// Implemented for [`Window`] and [`WebviewWindow`].
 pub trait DesktopUnderlayExt {
     /// Set the window as desktop underlay or revert it to normal.
     ///
