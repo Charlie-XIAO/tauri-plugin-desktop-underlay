@@ -31,7 +31,7 @@ pub(super) unsafe fn set_underlay(ns_window: *mut Object) -> Result<()> {
 pub(super) unsafe fn unset_underlay(ns_window: *mut Object) -> Result<()> {
     // 4 - CGWindowLevelKey.normalWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
-    let () = msg_send![ns_window, setLevel:CGWindowLevelForKey(4)];
+    let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(4)];
 
     let behavior: c_ulong = msg_send![ns_window, collectionBehavior];
     let () = msg_send![ns_window, setCollectionBehavior: behavior & !UNDERLAY_COLLECTION_BEHAVIOR];
