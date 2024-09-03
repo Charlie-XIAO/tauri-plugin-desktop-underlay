@@ -10,18 +10,20 @@ extern "C" {
     fn CGWindowLevelForKey(key: i32) -> i32;
 }
 
+// 1 << 0 - NSWindowCollectionBehaviorCanJoinAllSpaces
+// 1 << 4 - NSWindowCollectionBehaviorStationary
+// 1 << 6 - NSWindowCollectionBehaviorIgnoresCycle
+// https://developer.apple.com/documentation/appkit/nswindowcollectionbehavior
+const UNDERLAY_COLLECTION_BEHAVIOR: c_ulong = 1 << 0 | 1 << 4 | 1 << 6;
+
 /// Set the window as a desktop underlay.
 pub(super) unsafe fn set_underlay(ns_window: *mut Object) -> Result<()> {
     // 2 - CGWindowLevelKey.desktopWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
     let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(2) - 1];
 
-    // 1 << 0 - NSWindowCollectionBehaviorCanJoinAllSpaces
-    // 1 << 4 - NSWindowCollectionBehaviorStationary
-    // 1 << 6 - NSWindowCollectionBehaviorIgnoresCycle
-    // https://developer.apple.com/documentation/appkit/nswindowcollectionbehavior
     let behavior: c_ulong = msg_send![ns_window, collectionBehavior];
-    let () = msg_send![ns_window, setCollectionBehavior: behavior | (1 << 0) | (1 << 4) | (1 << 6)];
+    let () = msg_send![ns_window, setCollectionBehavior: behavior | UNDERLAY_COLLECTION_BEHAVIOR];
     Ok(())
 }
 
@@ -31,11 +33,7 @@ pub(super) unsafe fn unset_underlay(ns_window: *mut Object) -> Result<()> {
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
     let () = msg_send![ns_window, setLevel:CGWindowLevelForKey(4)];
 
-    // 1 << 0 - NSWindowCollectionBehaviorCanJoinAllSpaces
-    // 1 << 4 - NSWindowCollectionBehaviorStationary
-    // 1 << 6 - NSWindowCollectionBehaviorIgnoresCycle
-    // https://developer.apple.com/documentation/appkit/nswindowcollectionbehavior
     let behavior: c_ulong = msg_send![ns_window, collectionBehavior];
-    let () = msg_send![ns_window, setCollectionBehavior: behavior & !((1 << 0) | (1 << 4) | (1 << 6))];
+    let () = msg_send![ns_window, setCollectionBehavior: behavior & !UNDERLAY_COLLECTION_BEHAVIOR];
     Ok(())
 }

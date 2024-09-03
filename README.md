@@ -33,7 +33,6 @@ If you want to try a local build, or you want to try the [examples](#examples) b
 git clone https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay.git
 pnpm install
 pnpm build
-cargo check
 ```
 
 ## Usage
@@ -63,7 +62,7 @@ import {
 // --- Operate on the current window ---
 
 // Determine if it is desktop underlay
-const isUnderlay = await isDesktopUnderlay();
+const currentIsUnderlay = await isDesktopUnderlay();
 
 // Set as desktop underlay or reset to normal
 await setDesktopUnderlay(true);
@@ -75,7 +74,7 @@ await setDesktopUnderlay(!(await isDesktopUnderlay()));
 // --- Operate on another window with label "wallpaper" ---
 
 // Determine if it is desktop underlay
-const isUnderlay = await isDesktopUnderlay("wallpaper");
+const wallpaperIsUnderlay = await isDesktopUnderlay("wallpaper");
 
 // Set as desktop underlay or reset to normal
 await setDesktopUnderlay(true, "wallpaper");
@@ -97,11 +96,11 @@ let _ = main_window.set_desktop_underlay(false);
 
 ## FAQ
 
-See [FAQ](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/FAQ.md).
+See [FAQ](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/FAQ.md) for the list of frequently asked questions. If these do not answer your question and you cannot find an answer in the [issue tracker](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/issues) either, consider [submitting a new issue](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/issues/new).
 
 ## Contributing
 
-Issues and PRs are welcome. Since I am only using Windows for desktop development, it would be nice to get feedback from users on different platforms so that I can fix problems to the best of my abilities.
+Feel free to open issues to report bugs or request enhancements. Since I majorly develop on Windows, there could be many problems on Linux and macOS that I am not aware of. Pull requests are also welcome, though for larger changes it would be generally better to open an issue for discussion first.
 
 ## License
 

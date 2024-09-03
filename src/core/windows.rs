@@ -16,6 +16,7 @@ use windows::{
     },
 };
 
+/// Helper function to find the WorkerW window.
 unsafe extern "system" fn enum_window(window: HWND, ref_worker_w: LPARAM) -> BOOL {
     match FindWindowExA(window, None, s!("SHELLDLL_DefView"), None) {
         Ok(hwnd) if hwnd != HWND(null_mut()) => {},

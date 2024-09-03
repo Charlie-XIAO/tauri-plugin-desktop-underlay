@@ -1,4 +1,4 @@
-name: Format and Lint
+name: Lint
 
 on:
   push:
@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  format-and-lint:
+  lint:
     strategy:
       fail-fast: false
       matrix:
