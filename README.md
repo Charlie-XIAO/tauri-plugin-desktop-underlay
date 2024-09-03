@@ -2,8 +2,8 @@
 
 Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.
 
-- **Linux:** ✅ (Untested)
-- **MacOS:** ✅ (Untested)
+- **Linux:** ❌ (Under development)
+- **MacOS:** ✅
 - **Windows:** ✅
 
 ## Examples
