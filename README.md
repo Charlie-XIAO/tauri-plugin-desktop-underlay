@@ -10,7 +10,7 @@ Tauri plugin for making a window a desktop underlay, attached to the desktop, ab
 
 ## Examples
 
-- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock)
+- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock) [[Demo](https://github.com/user-attachments/assets/46fd0074-bb92-47ca-9a20-8bbf426658c6)]
 
 ## Install
 
