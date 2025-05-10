@@ -1,6 +1,8 @@
 // Copyright 2024 Yao Xiao
 // SPDX-License-Identifier: MIT
 
+#![doc = include_str!("../README.md")]
+
 use tauri::plugin::{Builder, TauriPlugin};
 use tauri::{generate_handler, Manager, Runtime};
 
