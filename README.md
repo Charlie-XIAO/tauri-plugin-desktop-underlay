@@ -40,13 +40,11 @@ pnpm add tauri-plugin-desktop-underlay-api
 First you need to register the core plugin with Tauri:
 
 ```rust
-fn main() {
-    tauri::Builder::default()
-        // Initialize the desktop-underlay plugin
-        .plugin(tauri_plugin_desktop_underlay::init())
-        .run(tauri::generate_context!())
-        .unwrap();
-}
+tauri::Builder::default()
+    // Initialize the desktop-underlay plugin
+    .plugin(tauri_plugin_desktop_underlay::init())
+    .run(tauri::generate_context!())
+    .unwrap();
 ```
 
 Afterwards all the plugin's APIs are available through the JavaScript guest bindings:
