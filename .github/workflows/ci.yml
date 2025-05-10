@@ -68,6 +68,10 @@ jobs:
       - name: Check code linting
         run: pnpm lint:check
 
+      - name: Build
+        run: pnpm build
+
       - name: Build examples
         run: |
+          pnpm -C examples/desktop-clock/ install --frozen-lockfile
           pnpm -C examples/desktop-clock/ tauri build

@@ -10,17 +10,17 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0-rc.4",
+    "@tauri-apps/api": "^2.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tauri-plugin-desktop-underlay-api": "link:../.."
+    "tauri-plugin-desktop-underlay-api": "link:..\\.."
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.0.0-rc.8",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.11"
+    "@tauri-apps/cli": "^2.5.0",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19"
   }
 }
