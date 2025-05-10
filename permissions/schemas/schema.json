@@ -49,7 +49,7 @@
           "minimum": 1.0
         },
         "description": {
-          "description": "Human-readable description of what the permission does. Tauri convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "description": "Human-readable description of what the permission does. Tauri convention is to use `<h4>` headings in markdown content for Tauri documentation generation purposes.",
           "type": [
             "string",
             "null"
@@ -111,7 +111,7 @@
           "type": "string"
         },
         "description": {
-          "description": "Human-readable description of what the permission does. Tauri internal convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "description": "Human-readable description of what the permission does. Tauri internal convention is to use `<h4>` headings in markdown content for Tauri documentation generation purposes.",
           "type": [
             "string",
             "null"
@@ -295,39 +295,34 @@
       "type": "string",
       "oneOf": [
         {
-          "description": "allow-is-desktop-underlay -> Enables the is_desktop_underlay command without any pre-configured scope.",
+          "description": "Enables the is_desktop_underlay command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "allow-is-desktop-underlay"
-          ]
+          "const": "allow-is-desktop-underlay",
+          "markdownDescription": "Enables the is_desktop_underlay command without any pre-configured scope."
         },
         {
-          "description": "deny-is-desktop-underlay -> Denies the is_desktop_underlay command without any pre-configured scope.",
+          "description": "Denies the is_desktop_underlay command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "deny-is-desktop-underlay"
-          ]
+          "const": "deny-is-desktop-underlay",
+          "markdownDescription": "Denies the is_desktop_underlay command without any pre-configured scope."
         },
         {
-          "description": "allow-set-desktop-underlay -> Enables the set_desktop_underlay command without any pre-configured scope.",
+          "description": "Enables the set_desktop_underlay command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "allow-set-desktop-underlay"
-          ]
+          "const": "allow-set-desktop-underlay",
+          "markdownDescription": "Enables the set_desktop_underlay command without any pre-configured scope."
         },
         {
-          "description": "deny-set-desktop-underlay -> Denies the set_desktop_underlay command without any pre-configured scope.",
+          "description": "Denies the set_desktop_underlay command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "deny-set-desktop-underlay"
-          ]
+          "const": "deny-set-desktop-underlay",
+          "markdownDescription": "Denies the set_desktop_underlay command without any pre-configured scope."
         },
         {
-          "description": "default -> Allow all permissions for the plugin.",
+          "description": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-set-desktop-underlay`\n- `allow-is-desktop-underlay`",
           "type": "string",
-          "enum": [
-            "default"
-          ]
+          "const": "default",
+          "markdownDescription": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-set-desktop-underlay`\n- `allow-is-desktop-underlay`"
         }
       ]
     }

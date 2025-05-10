@@ -1,11 +1,8 @@
 // Copyright 2024 Yao Xiao
 // SPDX-License-Identifier: MIT
 
-use tauri::{
-    generate_handler,
-    plugin::{Builder, TauriPlugin},
-    Manager, Runtime,
-};
+use tauri::plugin::{Builder, TauriPlugin};
+use tauri::{generate_handler, Manager, Runtime};
 
 mod commands;
 mod core;

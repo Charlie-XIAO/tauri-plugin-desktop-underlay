@@ -1,0 +1,5 @@
+include = ["*.toml", "examples/*/src-tauri/*.toml"]
+
+[formatting]
+align_entries = true
+reorder_keys  = true

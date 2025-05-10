@@ -29,8 +29,8 @@
     "pretest": "pnpm build",
     "tauri": "tauri",
     "build": "rollup -c",
-    "format": "prettier --write . && cargo fmt",
-    "format:check": "prettier --check . && cargo fmt -- --check",
+    "format": "prettier --write . && cargo +nightly fmt",
+    "format:check": "prettier --check . && cargo +nightly fmt -- --check",
     "lint": "cargo clippy --fix --allow-dirty --allow-staged -- -D warnings",
     "lint:check": "cargo clippy -- -D warnings"
   },
@@ -44,8 +44,12 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "rollup": "^4.21.2",
-    "shell-quote": "^1.8.1",
     "tslib": "^2.7.0",
     "typescript": "^5.5.4"
+  },
+  "prettier": {},
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md,mdx,html,css,scss,yml,yaml}": "prettier --write",
+    "*.rs": "rustfmt +nightly --"
   }
 }

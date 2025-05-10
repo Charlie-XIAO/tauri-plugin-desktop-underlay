@@ -2,10 +2,12 @@
 
 Allow all permissions for the plugin.
 
+#### This default permission set includes the following:
+
 - `allow-set-desktop-underlay`
 - `allow-is-desktop-underlay`
 
-## Permission Table 
+## Permission Table
 
 <table>
 <tr>

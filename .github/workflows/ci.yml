@@ -1,4 +1,4 @@
-name: Lint
+name: CI
 
 on:
   push:
@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  ci:
     strategy:
       fail-fast: false
       matrix:
@@ -33,7 +33,14 @@ jobs:
       - name: Rust setup
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy, rustfmt
+          components: clippy
+
+      - name: Formatting tools setup
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          rustup toolchain install nightly --component rustfmt --profile minimal --no-self-update
+          curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-linux-x86_64.gz | \
+            gzip -d - | install -m 755 /dev/stdin /usr/local/bin/taplo
 
       - name: Rust cache
         uses: swatinem/rust-cache@v2
@@ -56,7 +63,11 @@ jobs:
 
       - name: Check code formatting
         if: matrix.platform == 'ubuntu-latest'
-        run: pnpm format:check
+        run: pnpm format:check && taplo format --check --diff
 
       - name: Check code linting
         run: pnpm lint:check
+
+      - name: Build examples
+        run: |
+          pnpm -C examples/desktop-clock/ tauri build

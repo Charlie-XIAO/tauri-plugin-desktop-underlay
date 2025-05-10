@@ -16,5 +16,5 @@ pnpm tauri dev
 
 ## Technical Details
 
-- [`src/Manager.tsx`](./src/Manager.tsx): Toggle in the frontend.
-- [`src-tauri/src/main.rs`](./src-tauri/src/main.rs): Toggle in the backend.
+- [`src/manager/App.tsx`](./src/manager/App.tsx): Toggle with JS bindings.
+- [`src-tauri/src/main.rs`](./src-tauri/src/main.rs): Toggle with Rust.

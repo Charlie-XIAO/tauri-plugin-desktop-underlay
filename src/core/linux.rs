@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 use anyhow::Result;
-
 use gdk::WindowTypeHint;
-use gtk::{prelude::GtkWindowExt, ApplicationWindow};
+use gtk::prelude::GtkWindowExt;
+use gtk::ApplicationWindow;
 
 /// Set the window as a desktop underlay.
 pub(super) unsafe fn set_underlay(gtk_window: ApplicationWindow) -> Result<()> {

@@ -1,7 +1,7 @@
 import { setDesktopUnderlay, isDesktopUnderlay } from "tauri-plugin-desktop-underlay-api";
-import "./Manager.css";
+import "./App.css";
 
-function Manager() {
+function App() {
   async function toggleDesktopUnderlay() {
     await setDesktopUnderlay(!await isDesktopUnderlay("main"), "main");
   }
@@ -19,4 +19,4 @@ function Manager() {
   );
 }
 
-export default Manager;
+export default App;
