@@ -10,7 +10,7 @@ yarn.lock
 
 /.tauri
 /target
-Cargo.lock
+/Cargo.lock
 node_modules/
 
 dist-js
