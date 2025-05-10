@@ -1,5 +1,22 @@
 version: 2
 updates:
+  # Rust dependencies
+  - package-ecosystem: cargo
+    directories:
+      - /
+      - /examples/desktop-clock/src-tauri
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+    groups:
+      rust:
+        patterns:
+          - "*"
+
   # Node dependencies
   - package-ecosystem: npm
     directories:
@@ -9,27 +26,25 @@ updates:
       interval: weekly
     labels:
       - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
     groups:
-      all:
+      node:
         patterns:
           - "*"
 
-  # Cargo dependencies
-  - package-ecosystem: cargo
-    directories:
-      - /
-      - /examples/desktop-clock/src-tauri
-    schedule:
-      interval: weekly
-    labels:
-      - dependencies
-    groups:
-      all:
-        patterns:
-          - "*"
-
-  # GitHub Actions dependencies
+  # CI dependencies
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    labels:
+      - dependencies
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+    groups:
+      ci:
+        patterns:
+          - "*"

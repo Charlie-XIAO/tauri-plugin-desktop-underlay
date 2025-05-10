@@ -4,8 +4,8 @@
 use std::os::raw::c_ulong;
 
 use anyhow::Result;
-use objc::runtime::Object;
-use objc::{msg_send, sel, sel_impl};
+use objc2::msg_send;
+use objc2::runtime::Object;
 
 extern "C" {
     fn CGWindowLevelForKey(key: i32) -> i32;

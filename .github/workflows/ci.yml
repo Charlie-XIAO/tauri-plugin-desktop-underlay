@@ -24,7 +24,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies (Ubuntu only)
+      - name: Install dependencies
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
@@ -68,9 +68,9 @@ jobs:
           pnpm -C examples/desktop-clock/ install --frozen-lockfile
           pnpm -C examples/desktop-clock/ tauri build
 
-      - name: Check code formatting
+      - name: Check formatting
         if: matrix.platform == 'ubuntu-latest'
         run: pnpm format:check && taplo format --check --diff
 
-      - name: Check code linting
+      - name: Check linting
         run: pnpm lint:check
