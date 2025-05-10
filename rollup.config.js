@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
 import { cwd } from "process";
 import typescript from "@rollup/plugin-typescript";
 
@@ -20,7 +20,7 @@ export default {
   plugins: [
     typescript({
       declaration: true,
-      declarationDir: `./${pkg.exports.import.split("/")[0]}`,
+      declarationDir: dirname(pkg.exports.import),
     }),
   ],
   external: [

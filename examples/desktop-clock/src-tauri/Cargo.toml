@@ -1,13 +1,13 @@
 [package]
-name = "desktop-clock"
-version = "0.0.1"
+authors     = ["you"]
 description = ""
-authors = ["you"]
-edition = "2021"
+edition     = "2021"
+name        = "desktop-clock"
+version     = "0.0.1"
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc.7", features = [] }
+tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "2.0.0-rc.8", features = [ "tray-icon", "macos-private-api"] }
+tauri                         = { version = "2", features = ["tray-icon", "macos-private-api"] }
 tauri-plugin-desktop-underlay = { path = "../../../" }

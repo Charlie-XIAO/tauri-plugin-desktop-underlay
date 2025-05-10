@@ -1,9 +1,9 @@
 // Copyright 2024 Yao Xiao
 // SPDX-License-Identifier: MIT
 
-use crate::DesktopUnderlayExt;
-
 use tauri::{command, Manager, Runtime, Window};
+
+use crate::DesktopUnderlayExt;
 
 #[command]
 pub(crate) async fn set_desktop_underlay<R: Runtime>(
@@ -22,7 +22,9 @@ pub(crate) async fn set_desktop_underlay<R: Runtime>(
             window
         }
     };
-    target_window.set_desktop_underlay(desktop_underlay).map_err(Into::into)
+    target_window
+        .set_desktop_underlay(desktop_underlay)
+        .map_err(Into::into)
 }
 
 #[command]
