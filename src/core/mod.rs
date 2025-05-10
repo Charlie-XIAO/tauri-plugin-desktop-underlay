@@ -65,7 +65,7 @@ pub(crate) fn set_desktop_underlay<R: Runtime>(
 
     #[cfg(target_os = "macos")]
     {
-        let ns_window = window.ns_window().unwrap() as *mut objc::runtime::Object;
+        let ns_window = window.ns_window().unwrap() as *mut objc2::runtime::AnyObject;
         internal_set_desktop_underlay!(
             window,
             desktop_underlay,
