@@ -1,6 +1,6 @@
 [package]
-edition     = "2021"
-name        = "desktop-clock"
+edition = "2021"
+name    = "desktop-clock"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
