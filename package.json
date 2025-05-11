@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-desktop-underlay-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Yao Xiao <yx2436@nyu.edu>",
   "homepage": "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay",
