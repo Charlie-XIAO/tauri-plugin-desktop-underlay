@@ -1,6 +1,6 @@
 {
   "productName": "desktop-clock",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "identifier": "com.desktop-clock.app",
   "build": {
     "beforeDevCommand": "pnpm dev",

@@ -1,8 +1,11 @@
 {
   "name": "tauri-plugin-desktop-underlay-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "license": "MIT",
   "author": "Yao Xiao <yx2436@nyu.edu>",
-  "description": "Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.",
+  "homepage": "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay",
+  "repository": "github:Charlie-XIAO/tauri-plugin-desktop-underlay",
+  "description": "Tauri plugin for attaching a window to desktop, below icons and above wallpaper.",
   "keywords": [
     "tauri",
     "plugin",
