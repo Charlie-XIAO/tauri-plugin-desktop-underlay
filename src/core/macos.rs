@@ -1,3 +1,4 @@
+use std::ffi::c_void;
 use std::os::raw::c_ulong;
 
 use anyhow::Result;
@@ -15,7 +16,9 @@ extern "C" {
 const UNDERLAY_COLLECTION_BEHAVIOR: c_ulong = 1 << 0 | 1 << 4 | 1 << 6;
 
 /// Set the window as a desktop underlay.
-pub(super) unsafe fn set_underlay(ns_window: *mut AnyObject) -> Result<()> {
+pub(super) unsafe fn set_underlay(ns_window: *mut c_void) -> Result<()> {
+    let ns_window = ns_window as *mut AnyObject;
+
     // 2 - CGWindowLevelKey.desktopWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
     let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(2) - 1];
@@ -26,7 +29,9 @@ pub(super) unsafe fn set_underlay(ns_window: *mut AnyObject) -> Result<()> {
 }
 
 /// Unset the window from being a desktop underlay.
-pub(super) unsafe fn unset_underlay(ns_window: *mut AnyObject) -> Result<()> {
+pub(super) unsafe fn unset_underlay(ns_window: *mut c_void) -> Result<()> {
+    let ns_window = ns_window as *mut AnyObject;
+
     // 4 - CGWindowLevelKey.normalWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
     let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(4)];
