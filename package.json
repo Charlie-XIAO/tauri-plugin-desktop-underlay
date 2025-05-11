@@ -27,7 +27,6 @@
     "prepare": "husky",
     "prepublishOnly": "pnpm build",
     "pretest": "pnpm build",
-    "tauri": "tauri",
     "build": "rollup -c",
     "format": "prettier --write . && cargo +nightly fmt",
     "format:check": "prettier --check . && cargo +nightly fmt -- --check",
@@ -39,7 +38,6 @@
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.1.2",
-    "@tauri-apps/cli": "^2.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "prettier": "^3.5.3",

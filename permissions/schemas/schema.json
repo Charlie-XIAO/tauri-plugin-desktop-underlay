@@ -319,10 +319,22 @@
           "markdownDescription": "Denies the set_desktop_underlay command without any pre-configured scope."
         },
         {
-          "description": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-set-desktop-underlay`\n- `allow-is-desktop-underlay`",
+          "description": "Enables the toggle_desktop_underlay command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-toggle-desktop-underlay",
+          "markdownDescription": "Enables the toggle_desktop_underlay command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the toggle_desktop_underlay command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-toggle-desktop-underlay",
+          "markdownDescription": "Denies the toggle_desktop_underlay command without any pre-configured scope."
+        },
+        {
+          "description": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-is-desktop-underlay`\n- `allow-set-desktop-underlay`\n- `allow-toggle-desktop-underlay`",
           "type": "string",
           "const": "default",
-          "markdownDescription": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-set-desktop-underlay`\n- `allow-is-desktop-underlay`"
+          "markdownDescription": "Allow all permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-is-desktop-underlay`\n- `allow-set-desktop-underlay`\n- `allow-toggle-desktop-underlay`"
         }
       ]
     }

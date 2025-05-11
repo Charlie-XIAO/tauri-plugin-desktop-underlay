@@ -12,31 +12,23 @@
     "macOSPrivateApi": true,
     "windows": [
       {
-        "url": "main.html",
-        "label": "main",
-        "width": 320,
-        "height": 160,
-        "title": "Desktop Clock",
-        "resizable": false,
-        "decorations": false,
-        "transparent": true
-      },
-      {
         "url": "manager.html",
         "label": "manager",
-        "width": 400,
-        "height": 200,
-        "title": "Desktop Clock Manager",
-        "resizable": false
+        "title": "Manager",
+        "width": 320,
+        "height": 160
+      },
+      {
+        "url": "clock.html",
+        "label": "clock",
+        "title": "Clock",
+        "width": 320,
+        "height": 160,
+        "resizable": false,
+        "transparent": true,
+        "visible": false
       }
     ],
-    "trayIcon": {
-      "id": "tray",
-      "iconPath": "icons/icon.png",
-      "iconAsTemplate": true,
-      "menuOnLeftClick": false,
-      "tooltip": "Desktop Clock"
-    },
     "security": {
       "csp": null
     }

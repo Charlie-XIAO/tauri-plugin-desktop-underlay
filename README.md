@@ -16,7 +16,7 @@ Tauri plugin for making a window a desktop underlay, attached to the desktop, ab
 
 ## Examples
 
-- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock) [[Demo](https://github.com/user-attachments/assets/46fd0074-bb92-47ca-9a20-8bbf426658c6)]
+- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock) [[Demo](https://github.com/user-attachments/assets/894a5afb-269e-4158-af13-add266a69576)]
 
 ## Install
 
@@ -62,6 +62,7 @@ To operate on the current window:
 const isUnderlay = await isDesktopUnderlay();
 await setDesktopUnderlay(true);
 await setDesktopUnderlay(false);
+const nowIsUnderlay = await toggleDesktopUnderlay();
 ```
 
 To operate on another window (say, with label `wallpaper`):
@@ -70,6 +71,7 @@ To operate on another window (say, with label `wallpaper`):
 const isUnderlay = await isDesktopUnderlay("wallpaper");
 await setDesktopUnderlay(true, "wallpaper");
 await setDesktopUnderlay(false, "wallpaper");
+const nowIsUnderlay = await toggleDesktopUnderlay("wallpaper");
 ```
 
 If you only intend on using the APIs from Rust code, you can import the `DesktopUnderlayExt` extension on windows and webview windows:
@@ -78,8 +80,10 @@ If you only intend on using the APIs from Rust code, you can import the `Desktop
 use tauri_plugin_desktop_underlay::DesktopUnderlayExt;
 
 let main_window = app.get_webview_window("main").unwrap();
+let is_underlay = main_window.is_desktop_underlay();
 let _ = main_window.set_desktop_underlay(true);
 let _ = main_window.set_desktop_underlay(false);
+let now_is_underlay = main_window.toggle_desktop_underlay();
 ```
 
 ## Permissions
@@ -106,4 +110,4 @@ Feel free to open issues to report bugs or request enhancements. Since I majorly
 
 ## License
 
-Copyright (c) 2024 Yao Xiao [@Charlie-XIAO](https://github.com/Charlie-XIAO); this project is released under the [MIT License](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/LICENSE).
+Copyright (c) 2024-2025 Yao Xiao [@Charlie-XIAO](https://github.com/Charlie-XIAO); this project is released under the [MIT License](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/LICENSE).

@@ -3,5 +3,5 @@
   "identifier": "default",
   "description": "Capability for the manager window",
   "windows": ["manager"],
-  "permissions": ["desktop-underlay:default"]
+  "permissions": ["desktop-underlay:default", "process:allow-exit"]
 }

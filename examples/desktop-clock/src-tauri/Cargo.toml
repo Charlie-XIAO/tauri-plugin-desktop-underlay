@@ -9,5 +9,6 @@ version     = "0.0.1"
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri                         = { version = "2", features = ["tray-icon", "macos-private-api"] }
+tauri                         = { version = "2", features = ["macos-private-api"] }
 tauri-plugin-desktop-underlay = { path = "../../../" }
+tauri-plugin-process          = "2.2.1"

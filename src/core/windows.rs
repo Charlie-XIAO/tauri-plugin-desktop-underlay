@@ -1,6 +1,3 @@
-// Copyright 2024 Yao Xiao
-// SPDX-License-Identifier: MIT
-
 use anyhow::{bail, Result};
 use windows::core::{s, BOOL};
 use windows::Win32::Foundation::{HWND, LPARAM, WPARAM};

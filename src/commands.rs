@@ -1,12 +1,28 @@
-// Copyright 2024 Yao Xiao
-// SPDX-License-Identifier: MIT
-
 use tauri::{command, Manager, Runtime, Window};
 
 use crate::DesktopUnderlayExt;
 
 #[command]
-pub(crate) async fn set_desktop_underlay<R: Runtime>(
+pub async fn is_desktop_underlay<R: Runtime>(
+    window: Window<R>,
+    label: Option<String>,
+) -> tauri::Result<bool> {
+    let target_window = {
+        if let Some(label) = label {
+            window
+                .get_webview_window(label.as_str())
+                .ok_or(anyhow::anyhow!("Window not found: {label}"))?
+                .as_ref()
+                .window()
+        } else {
+            window
+        }
+    };
+    Ok(target_window.is_desktop_underlay())
+}
+
+#[command]
+pub async fn set_desktop_underlay<R: Runtime>(
     window: Window<R>,
     desktop_underlay: bool,
     label: Option<String>,
@@ -28,7 +44,7 @@ pub(crate) async fn set_desktop_underlay<R: Runtime>(
 }
 
 #[command]
-pub(crate) async fn is_desktop_underlay<R: Runtime>(
+pub async fn toggle_desktop_underlay<R: Runtime>(
     window: Window<R>,
     label: Option<String>,
 ) -> tauri::Result<bool> {
@@ -43,5 +59,5 @@ pub(crate) async fn is_desktop_underlay<R: Runtime>(
             window
         }
     };
-    Ok(target_window.is_desktop_underlay())
+    target_window.toggle_desktop_underlay().map_err(Into::into)
 }
