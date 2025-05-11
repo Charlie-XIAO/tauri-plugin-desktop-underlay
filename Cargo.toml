@@ -3,7 +3,7 @@ members = [".", "examples/*/src-tauri"]
 
 [package]
 authors      = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
-description  = "Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons."
+description  = "Tauri plugin for attaching a window to desktop, below icons and above wallpaper."
 edition      = "2021"
 exclude      = ["/examples", "/node_modules", "/dist-js", "/Cargo.lock"]
 homepage     = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
@@ -13,7 +13,7 @@ links        = "tauri-plugin-desktop-underlay"
 name         = "tauri-plugin-desktop-underlay"
 readme       = "README.md"
 repository   = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
-version      = "0.0.1"
+version      = "0.1.0"
 
 [build-dependencies]
 tauri-plugin = { version = "2", features = ["build"] }

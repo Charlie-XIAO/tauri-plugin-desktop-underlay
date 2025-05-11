@@ -24,7 +24,7 @@ Install the core plugin by adding the following to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-tauri-plugin-desktop-underlay = "0.0.1"
+tauri-plugin-desktop-underlay = "0.1.0"
 ```
 
 You can install the JavaScript guest bindings using your preferred JavaScript package manager:
