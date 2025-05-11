@@ -1,3 +1,9 @@
+[workspace]
+members = [
+  ".",
+  "examples/*/src-tauri",
+]
+
 [package]
 authors      = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
 description  = "Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons."

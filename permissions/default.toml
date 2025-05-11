@@ -1,3 +1,7 @@
 [default]
 description = "Allow all permissions for the plugin."
-permissions = ["allow-set-desktop-underlay", "allow-is-desktop-underlay"]
+permissions = [
+  "allow-is-desktop-underlay",
+  "allow-set-desktop-underlay",
+  "allow-toggle-desktop-underlay",
+]

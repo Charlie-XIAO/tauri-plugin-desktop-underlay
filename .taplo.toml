@@ -1,4 +1,4 @@
-include = ["*.toml", "examples/*/src-tauri/*.toml"]
+include = ["*.toml", "permissions/*.toml", "examples/*/src-tauri/*.toml"]
 
 [formatting]
 align_entries = true

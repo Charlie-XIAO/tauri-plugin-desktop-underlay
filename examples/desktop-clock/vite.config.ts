@@ -32,8 +32,8 @@ export default defineConfig(async () => ({
   build: {
     rollupOptions: {
       input: {
-        main: "main.html",
         manager: "manager.html",
+        clock: "clock.html",
       },
     },
   },

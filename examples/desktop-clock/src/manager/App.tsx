@@ -1,19 +1,22 @@
-import { setDesktopUnderlay, isDesktopUnderlay } from "tauri-plugin-desktop-underlay-api";
+import { toggleDesktopUnderlay } from "tauri-plugin-desktop-underlay-api";
+import { exit } from "@tauri-apps/plugin-process";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
-  async function toggleDesktopUnderlay() {
-    await setDesktopUnderlay(!await isDesktopUnderlay("main"), "main");
-  }
+  const [isUnderlay, setIsUnderlay] = useState(true);
+
+  const toggleMain = async () => {
+    const isUnderlay = await toggleDesktopUnderlay("clock");
+    setIsUnderlay(isUnderlay);
+  };
 
   return (
     <div className="container">
-      <button className="action" onClick={toggleDesktopUnderlay}>Toggle</button>
-      <div className="caption">
-        Click the button to toggle the main clock window between normal and desktop
-        underlay modes. Alternatively, you can find in the system tray a Tauri icon
-        saying "Desktop Clock". Right click to open and select "Toggle" from the menu to
-        achieve the same effect.
+      <div className="header">Clock: {isUnderlay ? "underlay" : "normal"}</div>
+      <div className="buttons">
+        <button onClick={toggleMain}>Toggle</button>
+        <button onClick={() => exit()}>Exit</button>
       </div>
     </div>
   );

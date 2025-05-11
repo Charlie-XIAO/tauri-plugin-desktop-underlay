@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-toggle-desktop-underlay"
+description = "Enables the toggle_desktop_underlay command without any pre-configured scope."
+commands.allow = ["toggle_desktop_underlay"]
+
+[[permission]]
+identifier = "deny-toggle-desktop-underlay"
+description = "Denies the toggle_desktop_underlay command without any pre-configured scope."
+commands.deny = ["toggle_desktop_underlay"]

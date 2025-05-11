@@ -1,6 +1,3 @@
-// Copyright 2024 Yao Xiao
-// SPDX-License-Identifier: MIT
-
 use std::sync::Mutex;
 
 use anyhow::Result;
@@ -13,86 +10,67 @@ mod macos;
 #[cfg(target_os = "windows")]
 mod windows;
 
+/// A Tauri state to keep track of the desktop underlay windows.
 #[derive(Default)]
-pub(crate) struct DesktopUnderlayState(Mutex<Vec<String>>);
+pub struct DesktopUnderlayState(Mutex<Vec<String>>);
 
-macro_rules! internal_set_desktop_underlay {
-    ($window:expr, $desktop_underlay:expr, $set_underlay:expr, $unset_underlay:expr) => {{
-        unsafe {
-            if $desktop_underlay {
-                $set_underlay()?;
-                $window
-                    .state::<DesktopUnderlayState>()
-                    .0
-                    .lock()
-                    .unwrap()
-                    .push($window.label().to_string());
-            } else {
-                $unset_underlay()?;
-                $window
-                    .state::<DesktopUnderlayState>()
-                    .0
-                    .lock()
-                    .unwrap()
-                    .retain(|label| label != &$window.label().to_string());
-            }
-        }
-    }};
-}
-
-pub(crate) fn set_desktop_underlay<R: Runtime>(
+fn unchecked_set_desktop_underlay<R: Runtime>(
     window: &Window<R>,
     desktop_underlay: bool,
 ) -> Result<()> {
-    if desktop_underlay == is_desktop_underlay(window) {
-        // Either the window is already a desktop underlay and we are trying to set it
-        // again, or the window is not a desktop underlay and we are trying to unset it;
-        // in either case, we perform no operation
-        return Ok(());
+    if desktop_underlay {
+        unsafe {
+            #[cfg(target_os = "linux")]
+            linux::set_underlay(window.gtk_window()?)?;
+            #[cfg(target_os = "macos")]
+            macos::set_underlay(window.ns_window()?)?;
+            #[cfg(target_os = "windows")]
+            windows::set_underlay(window.hwnd()?)?;
+        }
+        window
+            .state::<DesktopUnderlayState>()
+            .0
+            .lock()
+            .unwrap()
+            .push(window.label().to_string());
+    } else {
+        unsafe {
+            #[cfg(target_os = "linux")]
+            linux::unset_underlay(window.gtk_window()?)?;
+            #[cfg(target_os = "macos")]
+            macos::unset_underlay(window.ns_window()?)?;
+            #[cfg(target_os = "windows")]
+            windows::unset_underlay(window.hwnd()?)?;
+        }
+        window
+            .state::<DesktopUnderlayState>()
+            .0
+            .lock()
+            .unwrap()
+            .retain(|label| label != &window.label().to_string());
     }
 
-    #[cfg(target_os = "linux")]
-    {
-        let gtk_window = window.gtk_window().unwrap();
-        internal_set_desktop_underlay!(
-            window,
-            desktop_underlay,
-            || linux::set_underlay(gtk_window),
-            || linux::unset_underlay(gtk_window)
-        );
-        Ok(())
-    }
-
-    #[cfg(target_os = "macos")]
-    {
-        let ns_window = window.ns_window().unwrap() as *mut objc2::runtime::AnyObject;
-        internal_set_desktop_underlay!(
-            window,
-            desktop_underlay,
-            || macos::set_underlay(ns_window),
-            || macos::unset_underlay(ns_window)
-        );
-        Ok(())
-    }
-
-    #[cfg(target_os = "windows")]
-    {
-        let hwnd = window.hwnd().unwrap();
-        internal_set_desktop_underlay!(
-            window,
-            desktop_underlay,
-            || windows::set_underlay(hwnd),
-            || windows::unset_underlay(hwnd)
-        );
-        Ok(())
-    }
+    Ok(())
 }
 
-pub(crate) fn is_desktop_underlay<R: Runtime>(window: &Window<R>) -> bool {
+pub fn is_desktop_underlay<R: Runtime>(window: &Window<R>) -> bool {
     window
         .state::<DesktopUnderlayState>()
         .0
         .lock()
         .unwrap()
         .contains(&window.label().to_string())
+}
+
+pub fn set_desktop_underlay<R: Runtime>(window: &Window<R>, desktop_underlay: bool) -> Result<()> {
+    if desktop_underlay == is_desktop_underlay(window) {
+        return Ok(());
+    }
+    unchecked_set_desktop_underlay(window, desktop_underlay)
+}
+
+pub fn toggle_desktop_underlay<R: Runtime>(window: &Window<R>) -> Result<bool> {
+    let desktop_underlay = !is_desktop_underlay(window);
+    set_desktop_underlay(window, desktop_underlay)?;
+    Ok(desktop_underlay)
 }

@@ -1,6 +1,3 @@
-// Copyright 2024 Yao Xiao
-// SPDX-License-Identifier: MIT
-
 #![doc = include_str!("../README.md")]
 
 use tauri::plugin::{Builder, TauriPlugin};
@@ -20,8 +17,9 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             Ok(())
         })
         .invoke_handler(generate_handler![
+            commands::is_desktop_underlay,
             commands::set_desktop_underlay,
-            commands::is_desktop_underlay
+            commands::toggle_desktop_underlay,
         ])
         .build()
 }
