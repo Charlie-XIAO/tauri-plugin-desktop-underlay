@@ -8,9 +8,9 @@
 [![crates.io](https://img.shields.io/crates/dr/tauri-plugin-desktop-underlay?color=blue&style=flat-square)](https://crates.io/crates/tauri-plugin-desktop-underlay)
 [![docs.rs](https://img.shields.io/docsrs/tauri-plugin-desktop-underlay?color=blue&style=flat-square)](https://docs.rs/tauri-plugin-desktop-underlay)
 
-Tauri plugin for making a window a desktop underlay, attached to the desktop, above the wallpaper, and below desktop icons.
+Tauri plugin for attaching a window to desktop, below icons and above wallpaper, referred to as a **desktop underlay**.
 
-- **Linux:** ❌ (Implemented but untested)
+- **Linux:** Not tested, thus not guaranteed to work.
 - **MacOS:** ✅
 - **Windows:** ✅
 
@@ -20,7 +20,7 @@ Tauri plugin for making a window a desktop underlay, attached to the desktop, ab
 
 ## Install
 
-Install the core plugin by adding the following to your `Cargo.toml` file:
+Install the desktop underlay plugin by adding the following to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
@@ -53,6 +53,7 @@ Afterwards all the plugin's APIs are available through the JavaScript guest bind
 import {
   setDesktopUnderlay,
   isDesktopUnderlay,
+  toggleDesktopUnderlay,
 } from "tauri-plugin-desktop-underlay-api";
 ```
 
@@ -106,7 +107,7 @@ See [FAQ](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/mai
 
 ## Contributing
 
-Feel free to open issues to report bugs or request enhancements. Since I majorly develop on Windows, there could be many problems on Linux and macOS that I am not aware of. Pull requests are also welcome, though for larger changes it would be generally better to open an issue for discussion first.
+Feel free to open issues to report bugs or request features and improvements. Since I majorly develop on Windows, there could be many problems on Linux and macOS that I am not aware of. Pull requests are also welcome, though for larger changes it would be generally better to open an issue for discussion first.
 
 ## License
 
