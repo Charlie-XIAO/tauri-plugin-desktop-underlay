@@ -2,9 +2,7 @@ version: 2
 updates:
   # Rust dependencies
   - package-ecosystem: cargo
-    directories:
-      - /
-      - /examples/desktop-clock/src-tauri
+    directory: /
     schedule:
       interval: weekly
     labels:
@@ -19,9 +17,7 @@ updates:
 
   # Node dependencies
   - package-ecosystem: npm
-    directories:
-      - /
-      - /examples/desktop-clock
+    directory: /
     schedule:
       interval: weekly
     labels:
