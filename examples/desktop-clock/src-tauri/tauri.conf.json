@@ -1,7 +1,7 @@
 {
   "productName": "desktop-clock",
   "version": "0.0.0",
-  "identifier": "com.desktop-clock.app",
+  "identifier": "com.tauri.desktop-clock",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
