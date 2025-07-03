@@ -1,5 +1,5 @@
 [workspace]
-members = [".", "examples/*/src-tauri"]
+members = [".", "examples/desktop-clock/src-tauri"]
 
 [package]
 authors      = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
