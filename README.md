@@ -14,9 +14,9 @@ Tauri plugin for attaching a window to desktop, below icons and above wallpaper,
 - **MacOS:** ✅
 - **Windows:** ✅
 
-## Examples
+## Examples (With Demos)
 
-- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock) [[Demo](https://github.com/user-attachments/assets/894a5afb-269e-4158-af13-add266a69576)]
+- [Desktop Clock](https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay/tree/main/examples/desktop-clock)
 
 ## Install
 
