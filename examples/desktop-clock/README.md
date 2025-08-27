@@ -9,7 +9,6 @@ https://github.com/user-attachments/assets/894a5afb-269e-4158-af13-add266a69576
 Clone the repository and build from source if you have not done so (see [Build from Source](../../README.md#build-from-source)). Then run the app:
 
 ```bash
-pnpm install
 pnpm -C examples/desktop-clock/ tauri dev
 ```
 
