@@ -1,7 +1,7 @@
 {
   "productName": "desktop-clock",
   "version": "0.0.0",
-  "identifier": "com.tauri.desktop-clock",
+  "identifier": "com.tauri-plugin-desktop-underlay.desktop-clock",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
