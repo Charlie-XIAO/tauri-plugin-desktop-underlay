@@ -24,7 +24,7 @@ Install the desktop underlay plugin by adding the following to your `Cargo.toml`
 
 ```toml
 [dependencies]
-tauri-plugin-desktop-underlay = "0.1.1"
+tauri-plugin-desktop-underlay = "0.2.0"
 ```
 
 You can install the JavaScript guest bindings using your preferred JavaScript package manager:
