@@ -6,6 +6,9 @@ on:
       - "v*.*.*"
   workflow_dispatch:
 
+permissions:
+  id-token: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -22,19 +25,13 @@ jobs:
       - name: Rust setup
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: ./ -> target
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Node setup and cache
+      - name: Node setup
         uses: actions/setup-node@v6
         with:
           node-version-file: .node-version
-          cache: pnpm
           registry-url: https://registry.npmjs.org
 
       - name: Install frontend dependencies
