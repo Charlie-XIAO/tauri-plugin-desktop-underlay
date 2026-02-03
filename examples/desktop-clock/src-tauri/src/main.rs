@@ -1,6 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{generate_context, Builder, Manager};
+use tauri::{Builder, Manager, generate_context};
 use tauri_plugin_desktop_underlay::DesktopUnderlayExt;
 
 fn main() {

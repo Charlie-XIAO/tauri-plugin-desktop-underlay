@@ -1,7 +1,7 @@
 #![doc = include_str!("../README.md")]
 
 use tauri::plugin::{Builder, TauriPlugin};
-use tauri::{generate_handler, Manager, Runtime};
+use tauri::{Manager, Runtime, generate_handler};
 
 mod commands;
 mod core;

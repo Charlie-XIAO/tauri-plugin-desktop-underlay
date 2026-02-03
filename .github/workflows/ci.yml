@@ -36,11 +36,8 @@ jobs:
           components: clippy
 
       - name: Formatting tools setup
-        if: matrix.platform == 'ubuntu-latest'
         run: |
           rustup toolchain install nightly --component rustfmt --profile minimal --no-self-update
-          curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-linux-x86_64.gz | \
-            gzip -d - | install -m 755 /dev/stdin /usr/local/bin/taplo
 
       - name: Rust cache
         uses: swatinem/rust-cache@v2
@@ -49,13 +46,11 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Node setup and cache
         uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version-file: .node-version
           cache: pnpm
 
       - name: Build
@@ -69,8 +64,7 @@ jobs:
           pnpm -C examples/desktop-clock/ tauri build
 
       - name: Check formatting
-        if: matrix.platform == 'ubuntu-latest'
-        run: pnpm format:check && taplo format --check --diff
+        run: pnpm format:check
 
       - name: Check linting
         run: pnpm lint:check

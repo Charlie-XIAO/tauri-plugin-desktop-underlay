@@ -5,7 +5,7 @@ use anyhow::Result;
 use objc2::msg_send;
 use objc2::runtime::AnyObject;
 
-extern "C" {
+unsafe extern "C" {
     fn CGWindowLevelForKey(key: i32) -> i32;
 }
 
@@ -21,7 +21,8 @@ pub(super) unsafe fn set_underlay(ns_window: *mut c_void) -> Result<()> {
 
     // 2 - CGWindowLevelKey.desktopWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
-    let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(2) - 1];
+    let level = unsafe { CGWindowLevelForKey(2) } - 1;
+    let () = msg_send![ns_window, setLevel: level];
 
     let behavior: c_ulong = msg_send![ns_window, collectionBehavior];
     let () = msg_send![ns_window, setCollectionBehavior: behavior | UNDERLAY_COLLECTION_BEHAVIOR];
@@ -34,7 +35,8 @@ pub(super) unsafe fn unset_underlay(ns_window: *mut c_void) -> Result<()> {
 
     // 4 - CGWindowLevelKey.normalWindow
     // https://developer.apple.com/documentation/coregraphics/cgwindowlevelkey
-    let () = msg_send![ns_window, setLevel: CGWindowLevelForKey(4)];
+    let level = unsafe { CGWindowLevelForKey(4) };
+    let () = msg_send![ns_window, setLevel: level];
 
     let behavior: c_ulong = msg_send![ns_window, collectionBehavior];
     let () = msg_send![ns_window, setCollectionBehavior: behavior & !UNDERLAY_COLLECTION_BEHAVIOR];

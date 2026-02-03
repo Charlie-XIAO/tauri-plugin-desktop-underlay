@@ -22,10 +22,7 @@ export async function isDesktopUnderlay(label?: string): Promise<boolean> {
  * @param label The label of the window. If not provided, the current window
  *  will be used.
  */
-export async function setDesktopUnderlay(
-  desktopUnderlay: boolean,
-  label?: string,
-): Promise<void> {
+export async function setDesktopUnderlay(desktopUnderlay: boolean, label?: string): Promise<void> {
   return await invoke<void>("plugin:desktop-underlay|set_desktop_underlay", {
     desktopUnderlay,
     label,
@@ -40,10 +37,7 @@ export async function setDesktopUnderlay(
  * @returns Whether the window is desktop underlay after the operation.
  */
 export async function toggleDesktopUnderlay(label?: string): Promise<boolean> {
-  return await invoke<boolean>(
-    "plugin:desktop-underlay|toggle_desktop_underlay",
-    {
-      label,
-    },
-  );
+  return await invoke<boolean>("plugin:desktop-underlay|toggle_desktop_underlay", {
+    label,
+  });
 }

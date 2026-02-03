@@ -1,7 +1,7 @@
-edition = "2021"
+edition = "2024"
 
-format_strings             = true
-group_imports              = "StdExternalCrate"
-imports_granularity        = "Module"
+format_strings = true
+group_imports = "StdExternalCrate"
+imports_granularity = "Module"
 match_block_trailing_comma = true
-wrap_comments              = true
+wrap_comments = true
