@@ -5,7 +5,7 @@ use anyhow::Result;
 use objc2::msg_send;
 use objc2::runtime::AnyObject;
 
-extern "C" {
+unsafe extern "C" {
     fn CGWindowLevelForKey(key: i32) -> i32;
 }
 
