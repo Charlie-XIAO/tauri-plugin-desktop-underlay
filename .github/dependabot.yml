@@ -37,9 +37,6 @@ updates:
       interval: weekly
     labels:
       - dependencies
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
     groups:
       ci:
         patterns:

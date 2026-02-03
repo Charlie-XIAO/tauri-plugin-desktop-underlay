@@ -1,4 +1,4 @@
-use tauri::{command, Manager, Runtime, Window};
+use tauri::{Manager, Runtime, Window, command};
 
 use crate::DesktopUnderlayExt;
 

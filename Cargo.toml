@@ -2,33 +2,29 @@
 members = [".", "examples/desktop-clock/src-tauri"]
 
 [package]
-authors      = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
-description  = "Tauri plugin for attaching a window to desktop, below icons and above wallpaper."
-edition      = "2021"
-exclude      = ["/examples", "/node_modules", "/dist-js", "/Cargo.lock"]
-homepage     = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
-keywords     = ["tauri", "plugin", "desktop", "underlay", "wallpaper"]
+authors = ["Yao Xiao <yx2436@nyu.edu> (https://charlie-xiao.github.io/)"]
+description = "Tauri plugin for attaching a window to desktop, below icons and above wallpaper."
+edition = "2024"
+exclude = ["/examples", "/node_modules", "/dist-js", "/Cargo.lock"]
+homepage = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
+keywords = ["tauri", "plugin", "desktop", "underlay", "wallpaper"]
 license-file = "LICENSE"
-links        = "tauri-plugin-desktop-underlay"
-name         = "tauri-plugin-desktop-underlay"
-readme       = "README.md"
-repository   = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
-version      = "0.2.0"
+links = "tauri-plugin-desktop-underlay"
+name = "tauri-plugin-desktop-underlay"
+readme = "README.md"
+repository = "https://github.com/Charlie-XIAO/tauri-plugin-desktop-underlay"
+version = "0.2.0"
 
 [package.metadata.docs.rs]
 default-target = "x86_64-unknown-linux-gnu"
-targets = [
-  "x86_64-unknown-linux-gnu",
-  "x86_64-apple-darwin",
-  "x86_64-pc-windows-msvc",
-]
+targets = ["x86_64-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-pc-windows-msvc"]
 
 [build-dependencies]
 tauri-plugin = { version = "2", features = ["build"] }
 
 [dependencies]
 anyhow = "1"
-tauri  = "2"
+tauri = "2"
 
 [target."cfg(target_os = \"linux\")".dependencies]
 gdk = "0.18"
@@ -38,7 +34,4 @@ gtk = "0.18"
 objc2 = "0.6"
 
 [target."cfg(target_os = \"windows\")".dependencies]
-windows = { version = "0.61", features = [
-  "Win32_UI_WindowsAndMessaging",
-  "Win32_Foundation",
-] }
+windows = { version = "0.61", features = ["Win32_UI_WindowsAndMessaging", "Win32_Foundation"] }
