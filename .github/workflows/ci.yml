@@ -45,7 +45,7 @@ jobs:
           workspaces: ./ -> target
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
 
       - name: Node setup and cache
         uses: actions/setup-node@v6
