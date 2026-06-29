@@ -46,9 +46,9 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
-    "oxfmt": "^0.42.0",
-    "tsdown": "^0.21.4"
+    "lint-staged": "^17.0.8",
+    "oxfmt": "^0.57.0",
+    "tsdown": "^0.22.3"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,json,md,html,css,yml,yaml,toml}": "oxfmt",
